@@ -1,0 +1,28 @@
+#background {
+    text-align: center;
+
+
+
+}
+
+#clock-background{ 
+    margin: auto;
+    background-color: rgb(174, 189, 189);
+    justify-items: center;
+    width: 400px;
+    height: 200px;
+
+}
+
+#box-holder {
+    background-color: #fff;
+    margin: auto;
+    display: flex;
+
+}
+
+
+#box-holder #box-hour, #box-minute, #box-second{
+    border: 1px solid black;
+    width: 25px;
+}
