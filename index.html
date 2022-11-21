@@ -14,14 +14,14 @@
     </div>
 
     <script>
-        let notes = ['hello', 'today is a good day'];
+        let notes = [];
 
         function addNotes() {
             let temp = notes.map(note=> `<li>${note}</li>`).join('\n')
             document.querySelector('ul').innerHTML = temp;
         }
 
-        addNotes();
+
 
 
         let btnAdd = document.getElementById('btnAdd');
@@ -40,9 +40,8 @@
         }
 
 
-        btnAdd.addEventListener('click', ()=> {
-            pushNotes()
-        });
+        
+
 
         btnDel.addEventListener('click', ()=> {
             console.log([notes[0]]);
