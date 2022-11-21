@@ -48,6 +48,18 @@
                 addNotes();
             }
         }
+        
+        function setRed() {
+            document.querySelector('ul').style.backgroundColor = 'red';
+        }
+        function setYellow() {
+            document.querySelector('ul').style.backgroundColor = 'yellow';
+
+        }
+        function setGreen() {
+            document.querySelector('ul').style.backgroundColor = 'green';
+
+        }
 
         const addStream = Rx.Observable
             .fromEvent(btnAdd, 'click')
@@ -58,17 +70,17 @@
         .fromEvent(btnDel, 'click')
         .subscribe(() => delNotes())
 
+        const redStream = Rx.Observable
+        .fromEvent(btnColourRed, 'click')
+        .subscribe(() => setRed())
 
-        btnColourRed.addEventListener('click', ()=> {
-            document.querySelector('ul').style.backgroundColor = 'red';
-        })
+        const yellowStream = Rx.Observable
+        .fromEvent(btnColourYellow, 'click')
+        .subscribe(() => setYellow())
 
-        btnColourYellow.addEventListener('click', ()=> {
-            document.querySelector('ul').style.backgroundColor = 'yellow';
-        })
 
-        btnColourGreen.addEventListener('click', ()=> {
-            document.querySelector('ul').style.backgroundColor = 'green';
-        })
+        const greenStream = Rx.Observable
+        .fromEvent(btnColourGreen, 'click')
+        .subscribe(() => setGreen())
     </script>
 </body>
