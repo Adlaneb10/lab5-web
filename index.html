@@ -14,7 +14,7 @@
     </div>
 
     <script>
-        let notes = ['hello', 'wagwan'];
+        let notes = ['hello', 'today is a good day'];
 
         function addNotes() {
             let temp = notes.map(note=> `<li>${note}</li>`).join('\n')
@@ -23,6 +23,7 @@
 
         addNotes();
 
+
         let btnAdd = document.getElementById('btnAdd');
         let btnDel = document.getElementById('btnDelete');
         let btnColourRed = document.getElementById('btnRed');
@@ -30,13 +31,18 @@
         let btnColourGreen = document.getElementById('btnGreen');
         let input = document.querySelector('input');
 
-        btnAdd.addEventListener('click', () => {
+        function pushNotes() {
             notes.push(input.value);
-            input.value ='';
+            
             addNotes();
+            input.value='';
+            console.log(input)            
+        }
 
-            console.log(input)
-        })
+
+        btnAdd.addEventListener('click', ()=> {
+            pushNotes()
+        });
 
         btnDel.addEventListener('click', ()=> {
             console.log([notes[0]]);
