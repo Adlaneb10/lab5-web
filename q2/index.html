@@ -23,5 +23,13 @@
             </div>
             
         </div>
+        <script>
+            let val = 0;
+            const oneSecond = Rx.Observable.interval(1000);
+            const fiveSeconds = () => Rx.Observable.interval(5000);
+            const bufferWhenExample = oneSecond.bufferWhen(fiveSeconds);
+            const subscribe = bufferWhenExample.subscribe(val => console.log('Emitted offer: ', val));
+        </script>
     </body>
+
 </html>
