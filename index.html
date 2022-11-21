@@ -40,21 +40,24 @@
             console.log(input)            
         }
 
-        const addStream = Rx.Observable
-            .fromEvent(btnAdd, 'click')
-            .subscribe(() => pushNotes())
-        
-
-
-        btnDel.addEventListener('click', ()=> {
+        function delNotes(){
             console.log([notes[0]]);
             let arrayPos = notes.indexOf(input.value);
             if(arrayPos != -1 ) {
                 delete notes[arrayPos];
                 addNotes();
             }
+        }
 
-        })
+        const addStream = Rx.Observable
+            .fromEvent(btnAdd, 'click')
+            .subscribe(() => pushNotes())
+        
+
+        const delStream = Rx.Observable
+        .fromEvent(btnDel, 'click')
+        .subscribe(() => delNotes())
+
 
         btnColourRed.addEventListener('click', ()=> {
             document.querySelector('ul').style.backgroundColor = 'red';
