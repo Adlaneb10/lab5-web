@@ -25,13 +25,18 @@
         </div>
         <script>
             let btnSubmit = document.getElementById('btnStart');
-            function test() {
-                console.log("clicked brev");
+            function countdownCalc() {
+                let hourInput = document.getElementById("hourly").value;
+                let minInput = document.getElementById("minutes").value;
+                let secInput = document.getElementById("seconds").value;
+                console.log(hourInput);
+                console.log(minInput);
+                console.log(secInput);
             }
 
             const submitStream = Rx.Observable
                 .fromEvent(btnSubmit, 'click')
-                .subscribe(()=>test())
+                .subscribe(()=> countdownCalc())
         </script>
     </body>
 
