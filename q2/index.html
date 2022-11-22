@@ -43,7 +43,16 @@
                 let minuteMS = minInput * 1000 * 60
                 let secondsMS = secInput * 1000
                 console.log("hoursMS: " + hoursMS + "MinMs :" + minuteMS + "secMs :" +secondsMS)
+                totalMs = hoursMS + minuteMS + secondsMS;
 
+                let timeCheck = Rx.Observable.interval(1000);
+                let timeCheckMerge = Rx.Observable.merge(timeCheck.mapTo(-1000)) 
+                console.log(timeCheck)
+                let timeNewSubscribe = timeCheckMerge.takeWhile(res => (totalMs + res) >= 0)
+                let timeSub = timeNewSubscribe.subscribe(res => {
+                    let newTotal = totalMs + res;
+                    console.log("LatestTotal "+newTotal )
+                })
 
 
             }
