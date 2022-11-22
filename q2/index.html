@@ -37,8 +37,15 @@
                 console.log(secInput);
                 let combined = hourInput +":"+minInput+":" + secInput;
                 console.log(combined);
-                document.getElementById("countdownDrop").innerHTML=hourInput;
-                
+                document.getElementById("countdownDrop").innerHTML=combined;
+                // convert ms 1hr = 3600000 h*1000*60*60
+                let hoursMS = hourInput * 1000 * 60 * 60
+                let minuteMS = minInput * 1000 * 60
+                let secondsMS = secInput * 1000
+                console.log("hoursMS: " + hoursMS + "MinMs :" + minuteMS + "secMs :" +secondsMS)
+
+
+
             }
 
             const submitStream = Rx.Observable
