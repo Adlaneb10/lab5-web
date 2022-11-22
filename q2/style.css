@@ -37,5 +37,8 @@
 }
 
 #countdownDrop {
-    font-size: 25px;
+    font-size: 37px;
+    padding-top: 10px;
+    font-weight: bold;
+    font-family: sans-serif;
 }

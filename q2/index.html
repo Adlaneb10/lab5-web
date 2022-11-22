@@ -21,7 +21,7 @@
             <div id="btn-holder">
                 <button id="btnStart">START COUNTDOWN</button>
             </div>
-            
+
             <div id="countdownDrop">
 
             </div>
@@ -37,11 +37,11 @@
                 console.log(secInput);
                 let combined = hourInput +":"+minInput+":" + secInput;
                 console.log(combined);
-                document.getElementById("countdownDrop").innerHTML=combined;
                 // convert ms 1hr = 3600000 h*1000*60*60
                 let hoursMS = hourInput * 1000 * 60 * 60
                 let minuteMS = minInput * 1000 * 60
                 let secondsMS = secInput * 1000
+                let finalSet = "00"
                 console.log("hoursMS: " + hoursMS + "MinMs :" + minuteMS + "secMs :" +secondsMS)
                 totalMs = hoursMS + minuteMS + secondsMS;
 
@@ -50,8 +50,23 @@
                 console.log(timeCheck)
                 let timeNewSubscribe = timeCheckMerge.takeWhile(res => (totalMs + res) >= 0)
                 let timeSub = timeNewSubscribe.subscribe(res => {
+                    // total added in ms
                     let newTotal = totalMs + res;
-                    console.log("LatestTotal "+newTotal )
+                    totalMs = newTotal
+                    // console.log("LatestTotal "+totalMs )
+                    let milli = parseInt((totalMs%1000)/100)
+                    , seconds = parseInt((totalMs/1000)%60)
+                    , minutes = parseInt((totalMs/(1000*60))%60)
+                    , hours = parseInt((totalMs/(1000*60*60))%24)
+  
+
+                    let totalData = hours + ":"+minutes+":"+seconds;
+                    console.log(hours+":"+minutes+":"+seconds);
+                    if (hours == 0 && minutes == 0 && seconds == 0){
+                        document.getElementById("countdownDrop").innerHTML=finalSet;
+                    }else{
+                    document.getElementById("countdownDrop").innerHTML=totalData;
+                    }
                 })
 
 
