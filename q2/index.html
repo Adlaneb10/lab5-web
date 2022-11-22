@@ -9,13 +9,13 @@
 
             <div id="box-holder">
                 <div id="box-hour">
-                    <input type="text" id="hourly" placeholder="H">
+                    <input type="text" id="hourly" placeholder="H" max="24" maxlength="2">
                 </div>      
                 <div id="box-minute">
-                    <input type="text" id="minutes" placeholder="M">
+                    <input type="text" id="minutes" placeholder="M"  max="60" maxlength="2">
                 </div>
                 <div id="box-second">
-                    <input type="text" id="seconds" placeholder="S">
+                    <input type="text" id="seconds" placeholder="S"  max="60" maxlength="2">
                 </div>
             </div>
             <div id="btn-holder">
@@ -24,11 +24,14 @@
             
         </div>
         <script>
-            let val = 0;
-            const oneSecond = Rx.Observable.interval(1000);
-            const fiveSeconds = () => Rx.Observable.interval(5000);
-            const bufferWhenExample = oneSecond.bufferWhen(fiveSeconds);
-            const subscribe = bufferWhenExample.subscribe(val => console.log('Emitted offer: ', val));
+            let btnSubmit = document.getElementById('btnStart');
+            function test() {
+                console.log("clicked brev");
+            }
+
+            const submitStream = Rx.Observable
+                .fromEvent(btnSubmit, 'click')
+                .subscribe(()=>test())
         </script>
     </body>
 
