@@ -22,6 +22,9 @@
                 <button id="btnStart">START COUNTDOWN</button>
             </div>
             
+            <div id="countdownDrop">
+
+            </div>
         </div>
         <script>
             let btnSubmit = document.getElementById('btnStart');
@@ -32,6 +35,10 @@
                 console.log(hourInput);
                 console.log(minInput);
                 console.log(secInput);
+                let combined = hourInput +":"+minInput+":" + secInput;
+                console.log(combined);
+                document.getElementById("countdownDrop").innerHTML=hourInput;
+                
             }
 
             const submitStream = Rx.Observable
